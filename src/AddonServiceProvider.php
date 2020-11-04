@@ -4,7 +4,7 @@ namespace :uc:vendor\:uc:package;
 
 use Illuminate\Support\ServiceProvider;
 
-class :uc:packageServiceProvider extends ServiceProvider
+class AddonServiceProvider extends ServiceProvider
 {
     /**
      * Perform post-registration booting of services.
@@ -14,7 +14,7 @@ class :uc:packageServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', ':lc:vendor');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', ':lc:vendor');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', ':lc:vendor');
         // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         // $this->loadRoutesFrom(__DIR__.'/routes.php');
 
@@ -31,22 +31,7 @@ class :uc:packageServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/:lc:package.php', ':lc:package');
-
-        // Register the service the package provides.
-        $this->app->singleton(':lc:package', function ($app) {
-            return new :uc:package;
-        });
-    }
-
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
-    public function provides()
-    {
-        return [':lc:package'];
+        // $this->mergeConfigFrom(__DIR__.'/../config/:lc:package.php', ':lc:package');
     }
 
     /**
@@ -57,14 +42,14 @@ class :uc:packageServiceProvider extends ServiceProvider
     protected function bootForConsole(): void
     {
         // Publishing the configuration file.
-        $this->publishes([
-            __DIR__.'/../config/:lc:package.php' => config_path(':lc:package.php'),
-        ], ':lc:package.config');
+        // $this->publishes([
+        //     __DIR__.'/../config/:lc:package.php' => config_path(':lc:package.php'),
+        // ], ':lc:package.config');
 
         // Publishing the views.
-        /*$this->publishes([
+        $this->publishes([
             __DIR__.'/../resources/views' => base_path('resources/views/vendor/:lc:vendor'),
-        ], ':lc:package.views');*/
+        ], ':lc:package.views');
 
         // Publishing assets.
         /*$this->publishes([

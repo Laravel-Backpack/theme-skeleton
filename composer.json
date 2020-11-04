@@ -33,7 +33,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                ":uc:vendor\\:uc:package\\:uc:packageServiceProvider"
+                ":uc:vendor\\:uc:package\\AddonServiceProvider"
             ]
         }
     }
