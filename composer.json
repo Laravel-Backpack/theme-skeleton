@@ -10,7 +10,9 @@
         }
     ],
     "homepage": "https://github.com/:lc:vendor/:lc:package",
-    "keywords": ["Laravel", ":uc:package"],
+    "keywords": [
+        "Laravel", "Backpack", "Backpack for Laravel", "Backpack Addon", ":uc:package"
+    ],
     "require": {
         "illuminate/support": "~7|~8"
     },
