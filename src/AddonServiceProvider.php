@@ -44,22 +44,22 @@ class AddonServiceProvider extends ServiceProvider
         // Publishing the configuration file.
         // $this->publishes([
         //     __DIR__.'/../config/:lc:package.php' => config_path(':lc:package.php'),
-        // ], ':lc:package.config');
+        // ], 'config');
 
         // Publishing the views.
         $this->publishes([
             __DIR__.'/../resources/views' => base_path('resources/views/vendor/:lc:vendor'),
-        ], ':lc:package.views');
+        ], 'views');
 
         // Publishing assets.
         /*$this->publishes([
             __DIR__.'/../resources/assets' => public_path('vendor/:lc:vendor'),
-        ], ':lc:package.views');*/
+        ], 'assets');*/
 
         // Publishing the translation files.
         /*$this->publishes([
             __DIR__.'/../resources/lang' => resource_path('lang/vendor/:lc:vendor'),
-        ], ':lc:package.views');*/
+        ], 'lang');*/
 
         // Registering package commands.
         // $this->commands([]);
