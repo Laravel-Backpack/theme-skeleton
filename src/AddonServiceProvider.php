@@ -6,6 +6,15 @@ use Illuminate\Support\ServiceProvider;
 
 class AddonServiceProvider extends ServiceProvider
 {
+    protected $path;
+    protected $commands = [];
+
+    public function __construct($app)
+    {
+        $this->app = $app;
+        $this->path = __DIR__.'/..';
+    }
+
     /**
      * Perform post-registration booting of services.
      *
@@ -13,17 +22,21 @@ class AddonServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // TODO: if lang folder exists and is not empty
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', ':lc:vendor');
+        if ($this->packageDirectoryExistsAndIsNotEmpty('resources/lang')) {
+            $this->loadTranslationsFrom($this->path.'/resources/lang', ':lc:vendor/:lc:package');
+        }
         
-        // TODO: if views folder exists and is not empty
-        $this->loadViewsFrom(__DIR__.'/../resources/views', ':lc:vendor');
+        if ($this->packageDirectoryExistsAndIsNotEmpty('resources/views')) {
+            $this->loadViewsFrom($this->path.'/resources/views', ':lc:vendor/:lc:package');
+        }
 
-        // TODO: if migrations folder exists and is not empty
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        if ($this->packageDirectoryExistsAndIsNotEmpty('database/migrations')) {
+            $this->loadMigrationsFrom($this->path.'/database/migrations');
+        }
         
-        // TODO: if routes folder exists and is not empty
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
+        if ($this->packageDirectoryExistsAndIsNotEmpty('routes')) {
+            $this->loadRoutesFrom($this->path.'/routes/:lc:package.php');   
+        }
 
         // Publishing is only necessary when using the CLI.
         if ($this->app->runningInConsole()) {
@@ -38,8 +51,9 @@ class AddonServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        // TODO: if config folder exists and is not empty
-        // $this->mergeConfigFrom(__DIR__.'/../config/:lc:package.php', ':lc:package');
+        if ($this->packageDirectoryExistsAndIsNotEmpty('config')) {
+            $this->mergeConfigFrom($this->path.'/config/:lc:package.php', ':lc:vendor.:lc:package');
+        }
     }
 
     /**
@@ -49,32 +63,54 @@ class AddonServiceProvider extends ServiceProvider
      */
     protected function bootForConsole(): void
     {
-        // TODO: if config folder exists and is not empty
         // Publishing the configuration file.
-        // $this->publishes([
-        //     __DIR__.'/../config/:lc:package.php' => config_path(':lc:package.php'),
-        // ], 'config');
+        if ($this->packageDirectoryExistsAndIsNotEmpty('config')) {
+            $this->publishes([
+                $this->path.'/config/:lc:package.php' => config_path(':lc:vendor/:lc:package.php'),
+            ], 'config');
+        }
 
-        // TODO: if views folder exists and is not empty
         // Publishing the views.
-        $this->publishes([
-            __DIR__.'/../resources/views' => base_path('resources/views/vendor/:lc:vendor'),
-        ], 'views');
+        if ($this->packageDirectoryExistsAndIsNotEmpty('resources/views')) {
+            $this->publishes([
+                $this->path.'/resources/views' => base_path('resources/views/vendor/:lc:vendor/:lc:package'),
+            ], 'views');
+        }
 
-        // TODO: if assets folder exists and is not empty
         // Publishing assets.
-        /*$this->publishes([
-            __DIR__.'/../resources/assets' => public_path('vendor/:lc:vendor'),
-        ], 'assets');*/
+        if ($this->packageDirectoryExistsAndIsNotEmpty('resources/assets')) {
+            $this->publishes([
+                $this->path.'/resources/assets' => public_path('vendor/:lc:vendor/:lc:package'),
+            ], 'assets');
+        }
 
-        // TODO: if lang folder exists and is not empty
         // Publishing the translation files.
-        /*$this->publishes([
-            __DIR__.'/../resources/lang' => resource_path('lang/vendor/:lc:vendor'),
-        ], 'lang');*/
+        if ($this->packageDirectoryExistsAndIsNotEmpty('resources/lang')) {
+            $this->publishes([
+                $this->path.'/resources/lang' => resource_path('lang/vendor/:lc:vendor'),
+            ], 'lang');
+        }
 
-        // TODO: if commands array exists and is not empty
         // Registering package commands.
-        // $this->commands([]);
+        if (!empty($this->commands)) {
+            $this->commands($this->commands);
+        }
+    }
+
+    protected function packageDirectoryExistsAndIsNotEmpty($name)
+    {
+        // check if directory exists
+        if (!is_dir($this->path.'/'.$name)) {
+            return false;
+        }
+
+        // check if directory has files
+        foreach (scandir($this->path.'/'.$name) as $file) {
+            if ($file != '.' && $file != '..' && $file != '.gitkeep') {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
