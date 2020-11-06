@@ -82,7 +82,7 @@ composer remove :lc:vendor/:lc:package
 
 ## Change log
 
-Please see the [changelog](changelog.md) for more information on what has changed recently.
+Changes are documented here on Github. Please see the [Releases tab](/releases).
 
 ## Testing
 
