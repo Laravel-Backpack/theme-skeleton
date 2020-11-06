@@ -92,7 +92,7 @@ composer test
 
 ## Contributing
 
-Please see [contributing.md](contributing.md) a todolist and howtos.
+Please see [contributing.md](contributing.md) for a todolist and howtos.
 
 ## Security
 
