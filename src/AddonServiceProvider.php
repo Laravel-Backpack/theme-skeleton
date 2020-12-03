@@ -22,6 +22,11 @@ class AddonServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        if ($this->packageDirectoryExistsAndIsNotEmpty('bootstrap') &&
+            file_exists($helpers = $this->path.'/bootstrap/helpers.php')) { 
+            require $helpers;
+        }
+        
         if ($this->packageDirectoryExistsAndIsNotEmpty('resources/lang')) {
             $this->loadTranslationsFrom($this->path.'/resources/lang', ':lc:vendor/:lc:package');
         }
