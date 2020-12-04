@@ -28,11 +28,11 @@ class AddonServiceProvider extends ServiceProvider
         }
         
         if ($this->packageDirectoryExistsAndIsNotEmpty('resources/lang')) {
-            $this->loadTranslationsFrom($this->path.'/resources/lang', ':lc:vendor/:lc:package');
+            $this->loadTranslationsFrom($this->path.'/resources/lang', ':lc:vendor.:lc:package');
         }
         
         if ($this->packageDirectoryExistsAndIsNotEmpty('resources/views')) {
-            $this->loadViewsFrom($this->path.'/resources/views', ':lc:vendor/:lc:package');
+            $this->loadViewsFrom($this->path.'/resources/views', ':lc:vendor.:lc:package');
         }
 
         if ($this->packageDirectoryExistsAndIsNotEmpty('database/migrations')) {
