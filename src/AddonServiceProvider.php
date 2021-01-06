@@ -32,7 +32,11 @@ class AddonServiceProvider extends ServiceProvider
         }
         
         if ($this->packageDirectoryExistsAndIsNotEmpty('resources/views')) {
-            $this->loadViewsFrom($this->path.'/resources/views', ':lc:vendor.:lc:package');
+            // Load published views
+            $this->loadViewsFrom(base_path('resources/views/vendor/:lc:vendor/:lc:package'), ':lc:package');
+
+            // Fallback to package views
+            $this->loadViewsFrom($this->path.'/resources/views', ':lc:package');
         }
 
         if ($this->packageDirectoryExistsAndIsNotEmpty('database/migrations')) {
