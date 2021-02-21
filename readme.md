@@ -27,7 +27,7 @@ More exactly, it adds X and Y so that you can easily do Z.
 Via Composer
 
 ``` bash
-composer require :lc:vendor/:lc:package
+composer require :kc:vendor/:kc:package
 ```
 
 ## Usage
@@ -42,7 +42,7 @@ $this->crud->addField([
     'name' => 'agreed',
     'label' => 'I agree to the terms and conditions',
     'type' => 'new_field_name',
-    'view_namespace' => ':lc:package::fields',
+    'view_namespace' => ':kc:package::fields',
 ]);
 ```
 
@@ -62,7 +62,7 @@ If you need to change the field in any way, you can easily publish the file to y
 mkdir -p resources/views/vendor/backpack/crud/fields
 
 # copy the blade file inside the folder we created above
-cp -i vendor/:lc:vendor/:lc:package/src/resources/views/fields/field_name.blade.php resources/views/vendor/backpack/crud/fields/field_name.blade.php
+cp -i vendor/:kc:vendor/:kc:package/src/resources/views/fields/field_name.blade.php resources/views/vendor/backpack/crud/fields/field_name.blade.php
 ```
 
 **Step 2.** Remove the vendor namespace wherever you've used the field:
@@ -71,18 +71,18 @@ $this->crud->addField([
     'name' => 'agreed',
     'type' => 'toggle',
     'label' => 'I agree to the terms and conditions',
--   'view_namespace' => ':lc:package::fields'
+-   'view_namespace' => ':kc:package::fields'
 ]);
 ```
 
 **Step 3.** Uninstall this package. Since it only provides one file, and you're no longer using that file, it makes no sense to have the package installed:
 ```bash
-composer remove :lc:vendor/:lc:package
+composer remove :kc:vendor/:kc:package
 ```
 
 ## Change log
 
-Changes are documented here on Github. Please see the [Releases tab](https://github.com/:lc:vendor/:lc:package/releases).
+Changes are documented here on Github. Please see the [Releases tab](https://github.com/:kc:vendor/:kc:package/releases).
 
 ## Testing
 
@@ -110,10 +110,10 @@ This project was released under :license, so you can install it on top of any Ba
 However, please note that you do need Backpack installed, so you need to also abide by its [YUMMY License](https://github.com/Laravel-Backpack/CRUD/blob/master/LICENSE.md). That means in production you'll need a Backpack license code. You can get a free one for non-commercial use (or a paid one for commercial use) on [backpackforlaravel.com](https://backpackforlaravel.com).
 
 
-[ico-version]: https://img.shields.io/packagist/v/:lc:vendor/:lc:package.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/:lc:vendor/:lc:package.svg?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/:kc:vendor/:kc:package.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/:kc:vendor/:kc:package.svg?style=flat-square
 
-[link-packagist]: https://packagist.org/packages/:lc:vendor/:lc:package
-[link-downloads]: https://packagist.org/packages/:lc:vendor/:lc:package
-[link-author]: https://github.com/:lc:vendor
+[link-packagist]: https://packagist.org/packages/:kc:vendor/:kc:package
+[link-downloads]: https://packagist.org/packages/:kc:vendor/:kc:package
+[link-author]: https://github.com/:kc:vendor
 [link-contributors]: ../../contributors
