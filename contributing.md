@@ -1,9 +1,9 @@
 # Contributing
 
 Contributions are welcome and will be fully credited:
-- code contributions are accepted via Pull Requests to [this Github repo](https://github.com/:lc:vendor/:lc:package);
+- code contributions are accepted via Pull Requests to [this Github repo](https://github.com/:kc:vendor/:kc:package);
 - financial contributions are usually in the form of [donations](), [projects]() or [jobs](); 
-- documentation contributions are accepted via Pull Requests to [this Github repo](https://github.com/:lc:vendor/:lc:package);
+- documentation contributions are accepted via Pull Requests to [this Github repo](https://github.com/:kc:vendor/:kc:package);
 - other contributions are most likely welcome in the way you see fit;
 
 # Things you could do
