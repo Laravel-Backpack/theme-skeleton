@@ -42,7 +42,7 @@ $this->crud->addField([
     'name' => 'agreed',
     'label' => 'I agree to the terms and conditions',
     'type' => 'new_field_name',
-    'view_namespace' => ':kc:package::fields',
+    'view_namespace' => ':kc:vendor.:kc:package::fields',
 ]);
 ```
 
@@ -71,7 +71,7 @@ $this->crud->addField([
     'name' => 'agreed',
     'type' => 'toggle',
     'label' => 'I agree to the terms and conditions',
--   'view_namespace' => ':kc:package::fields'
+-   'view_namespace' => ':kc:vendor.:kc:package::fields'
 ]);
 ```
 
