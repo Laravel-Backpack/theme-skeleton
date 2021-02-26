@@ -4,12 +4,15 @@
 // When you run `php artisan packager:new` it will loop through the 
 // rules below and replace the filenames according to them.
 // 
-// Available placeholders: :uc:vendor, :uc:package, :lc:vendor, :lc:package
+// Available placeholders:
+// - :uc:vendor, :uc:package - UpperCase aka StudlyCase 
+// - :lc:vendor, :lc:package - lowercase
+// - :kc:vendor, :kc:package - kebab-case
 // 
 // You do NOT need this file in your Backpack addon, only in skeletons.
 // So it's safe to delete once you've created your Backpack addon.
 return [
-    'config/mypackage.php' => 'config/:lc:package.php',
-    'routes/mypackage.php' => 'routes/:lc:package.php',
-    'src/resources/lang/en/mypackage.php' => 'src/resources/lang/en/:lc:package.php',
+    'config/mypackage.php' => 'config/:kc:package.php',
+    'routes/mypackage.php' => 'routes/:kc:package.php',
+    'src/resources/lang/en/mypackage.php' => 'src/resources/lang/en/:kc:package.php',
 ];

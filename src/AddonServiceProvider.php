@@ -28,15 +28,15 @@ class AddonServiceProvider extends ServiceProvider
         }
         
         if ($this->packageDirectoryExistsAndIsNotEmpty('resources/lang')) {
-            $this->loadTranslationsFrom($this->path.'/resources/lang', ':lc:vendor.:lc:package');
+            $this->loadTranslationsFrom($this->path.'/resources/lang', ':kc:vendor.:kc:package');
         }
         
         if ($this->packageDirectoryExistsAndIsNotEmpty('resources/views')) {
             // Load published views
-            $this->loadViewsFrom(base_path('resources/views/vendor/:lc:vendor/:lc:package'), ':lc:vendor.:lc:package');
+            $this->loadViewsFrom(base_path('resources/views/vendor/:kc:vendor/:kc:package'), ':kc:vendor.:kc:package');
 
             // Fallback to package views
-            $this->loadViewsFrom($this->path.'/resources/views', ':lc:vendor.:lc:package');
+            $this->loadViewsFrom($this->path.'/resources/views', ':kc:vendor.:kc:package');
         }
 
         if ($this->packageDirectoryExistsAndIsNotEmpty('database/migrations')) {
@@ -44,7 +44,7 @@ class AddonServiceProvider extends ServiceProvider
         }
         
         if ($this->packageDirectoryExistsAndIsNotEmpty('routes')) {
-            $this->loadRoutesFrom($this->path.'/routes/:lc:package.php');   
+            $this->loadRoutesFrom($this->path.'/routes/:kc:package.php');   
         }
 
         // Publishing is only necessary when using the CLI.
@@ -61,7 +61,7 @@ class AddonServiceProvider extends ServiceProvider
     public function register(): void
     {
         if ($this->packageDirectoryExistsAndIsNotEmpty('config')) {
-            $this->mergeConfigFrom($this->path.'/config/:lc:package.php', ':lc:vendor.:lc:package');
+            $this->mergeConfigFrom($this->path.'/config/:kc:package.php', ':kc:vendor.:kc:package');
         }
     }
 
@@ -75,28 +75,28 @@ class AddonServiceProvider extends ServiceProvider
         // Publishing the configuration file.
         if ($this->packageDirectoryExistsAndIsNotEmpty('config')) {
             $this->publishes([
-                $this->path.'/config/:lc:package.php' => config_path(':lc:vendor/:lc:package.php'),
+                $this->path.'/config/:kc:package.php' => config_path(':kc:vendor/:kc:package.php'),
             ], 'config');
         }
 
         // Publishing the views.
         if ($this->packageDirectoryExistsAndIsNotEmpty('resources/views')) {
             $this->publishes([
-                $this->path.'/resources/views' => base_path('resources/views/vendor/:lc:vendor/:lc:package'),
+                $this->path.'/resources/views' => base_path('resources/views/vendor/:kc:vendor/:kc:package'),
             ], 'views');
         }
 
         // Publishing assets.
         if ($this->packageDirectoryExistsAndIsNotEmpty('resources/assets')) {
             $this->publishes([
-                $this->path.'/resources/assets' => public_path('vendor/:lc:vendor/:lc:package'),
+                $this->path.'/resources/assets' => public_path('vendor/:kc:vendor/:kc:package'),
             ], 'assets');
         }
 
         // Publishing the translation files.
         if ($this->packageDirectoryExistsAndIsNotEmpty('resources/lang')) {
             $this->publishes([
-                $this->path.'/resources/lang' => resource_path('lang/vendor/:lc:vendor'),
+                $this->path.'/resources/lang' => resource_path('lang/vendor/:kc:vendor'),
             ], 'lang');
         }
 
