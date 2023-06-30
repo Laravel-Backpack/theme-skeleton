@@ -2,13 +2,10 @@
 
 namespace :uc:vendor\:uc:package;
 
-use Illuminate\Support\ServiceProvider;
+use Backpack\CRUD\ThemeServiceProvider;
 
-class AddonServiceProvider extends ServiceProvider
+class AddonServiceProvider extends ThemeServiceProvider
 {
-    use AutomaticServiceProvider;
-
     protected $vendorName = ':kc:vendor';
     protected $packageName = ':kc:package';
-    protected $commands = [];
 }

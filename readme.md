@@ -6,9 +6,7 @@
 
 > **// TODO: customize this description and delete this line**
 
-This package provides XXX functionality for projects that use the [Backpack for Laravel](https://backpackforlaravel.com/) administration panel. 
-
-More exactly, it adds X and Y so that you can easily do Z.
+This package provides a new theme for projects that use the [Backpack for Laravel](https://backpackforlaravel.com/) administration panel. 
 
 
 ## Screenshots
@@ -35,60 +33,20 @@ composer require :kc:vendor/:kc:package
 > **// TODO: explain to your users how to use the functionality** this package provides; 
 > we've provided an example for a Backpack addon that provides a custom field
 
-To use the field this package provides, inside your custom CrudController do:
+To use the theme this package provides, use its namespace inside your `config/backpack/ui.php`, and the theme this was created from as a fallback:
 
 ```php
-$this->crud->addField([
-    'name' => 'agreed',
-    'label' => 'I agree to the terms and conditions',
-    'type' => 'new_field_name',
-    'view_namespace' => ':kc:vendor.:kc:package::fields',
-]);
+    'view_namespace' => ':kc:vendor.:kc:package::',
+    'view_namespace_fallback' => 'backpack.theme-coreuiv4::',
 ```
 
-Notice the ```view_namespace``` attribute - make sure that is exactly as above, to tell Backpack to load the field from this _addon package_, instead of assuming it's inside the _Backpack\CRUD package_.
+## Overriding
 
-
-## Overwriting
-
-> **// TODO: explain to your users how to overwrite the functionality this package provides;**
-> we've provided an example for a custom field
-
-If you need to change the field in any way, you can easily publish the file to your app, and modify that file any way you want. But please keep in mind that you will not be getting any updates.
-
-**Step 1.** Copy-paste the blade file to your directory:
-```bash
-# create the fields directory if it's not already there
-mkdir -p resources/views/vendor/backpack/crud/fields
-
-# copy the blade file inside the folder we created above
-cp -i vendor/:kc:vendor/:kc:package/src/resources/views/fields/field_name.blade.php resources/views/vendor/backpack/crud/fields/field_name.blade.php
-```
-
-**Step 2.** Remove the vendor namespace wherever you've used the field:
-```diff
-$this->crud->addField([
-    'name' => 'agreed',
-    'type' => 'toggle',
-    'label' => 'I agree to the terms and conditions',
--   'view_namespace' => ':kc:vendor.:kc:package::fields'
-]);
-```
-
-**Step 3.** Uninstall this package. Since it only provides one file, and you're no longer using that file, it makes no sense to have the package installed:
-```bash
-composer remove :kc:vendor/:kc:package
-```
+If you want to override any of the blade files this theme provides, feel free to create a file with the same name in your `resources/views/vendor/:kc:vendor/:kc:package/` - then Backpack will pick up your file instead of the one in the package.
 
 ## Change log
 
 Changes are documented here on Github. Please see the [Releases tab](https://github.com/:kc:vendor/:kc:package/releases).
-
-## Testing
-
-``` bash
-composer test
-```
 
 ## Contributing
 
@@ -106,9 +64,6 @@ If you discover any security related issues, please email :author_email instead 
 ## License
 
 This project was released under :license, so you can install it on top of any Backpack & Laravel project. Please see the [license file](license.md) for more information. 
-
-However, please note that you do need Backpack installed, so you need to also abide by its [YUMMY License](https://github.com/Laravel-Backpack/CRUD/blob/master/LICENSE.md). That means in production you'll need a Backpack license code. You can get a free one for non-commercial use (or a paid one for commercial use) on [backpackforlaravel.com](https://backpackforlaravel.com).
-
 
 [ico-version]: https://img.shields.io/packagist/v/:kc:vendor/:kc:package.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/:kc:vendor/:kc:package.svg?style=flat-square
